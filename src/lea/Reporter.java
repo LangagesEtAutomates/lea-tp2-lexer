@@ -29,13 +29,6 @@ public final class Reporter {
 	 * Affiche un résumé des diagnostics sur la console.
 	 * @return true si des erreurs ont été détectées, false sinon.
 	 */
-	public List<String> getErrors() {
-		return diagnostics.stream().map(d->d.message).toList();
-	}
-
-	/**
-	 * Représente une portion du fichier source par ses coordonnées.
-	 */
 	public boolean reportErrors() {
 		if(diagnostics.isEmpty()) {
 			System.out.println("La phase LEXER s'est terminée avec succès");
@@ -50,11 +43,17 @@ public final class Reporter {
 		}
 	}
 
+	public List<String> getErrors() {
+		return diagnostics.stream().map(d->d.message).toList();
+	}
 
 
 
 	public record Diagnostics(Span span, String message) {}
 
+	/**
+	 * Représente une portion du fichier source par ses coordonnées.
+	 */
 	public static record Span(int startLine, int startColumn, int endLine, int endColumn) {
 		public Span(int startLine, int startColumn, int length) { 
 			this(startLine, startColumn, startLine, startColumn + length - 1);
