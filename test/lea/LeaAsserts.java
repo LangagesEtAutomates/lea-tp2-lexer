@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Author: Matthieu Perrin
+ * Session: Introduction to JFlex
+ */
+
 package lea;
 
 import static org.junit.jupiter.api.Assertions.*;
